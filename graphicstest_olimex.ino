@@ -139,14 +139,16 @@ void loop(void)
   if (answer == true)
   {
     Serial.println("True");
-    digitalWrite(RELAY1, HIGH);
     digitalWrite(RELAY2, LOW);
+    delay(1000);
+    digitalWrite(RELAY1, HIGH);
   }
   else
   {
-    digitalWrite(RELAY1, LOW);
-    digitalWrite(RELAY2, HIGH);
     Serial.println("False");
+    digitalWrite(RELAY1, LOW);
+    delay(1000);
+    digitalWrite(RELAY2, HIGH);
   }
 }
 
@@ -162,15 +164,14 @@ bool Get_yes_no(void)
       {
         if (TS.X > 120)
         {
-          pressedRightButoon();
           resetLeftButoon();
+          pressedRightButoon();
           return true;
         }
         else
         {
-
-          pressedLeftButoon();
           resetRightButoon();
+          pressedLeftButoon();
           return false;
         }
       }
